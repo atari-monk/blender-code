@@ -12,8 +12,8 @@ bl_info = {
 
 
 def create_grid(width, height, spacing):
-    offset_x = -width * spacing / 2
-    offset_y = -height * spacing / 2
+    offset_x = -(width - 1) * spacing / 2
+    offset_y = -(height - 1) * spacing / 2
 
     for x in range(0, width):
         for y in range(0, height):
@@ -55,9 +55,9 @@ def register():
     bpy.utils.register_class(CustomGridPanel)
     bpy.utils.register_class(CreateCustomGridOperator)
     bpy.types.Scene.grid_width = bpy.props.IntProperty(
-        name="Width", default=10)
+        name="Width", default=2)
     bpy.types.Scene.grid_height = bpy.props.IntProperty(
-        name="Height", default=10)
+        name="Height", default=2)
     bpy.types.Scene.grid_spacing = bpy.props.IntProperty(
         name="Spacing", default=1)
 
