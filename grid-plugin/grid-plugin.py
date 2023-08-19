@@ -1,10 +1,33 @@
 import bpy
 
+bl_info = {
+    "name": "Custom Grid Creator",
+    "author": "Your Name",
+    "version": (1, 0),
+    "blender": (2, 80, 0),
+    "location": "View3D > Tool Shelf > Custom Grid",
+    "description": "Create a custom grid of empty objects",
+    "category": "Add Mesh",
+}
+
 
 def create_grid(width, height, spacing):
     for x in range(0, width, spacing):
         for y in range(0, height, spacing):
             bpy.ops.object.empty_add(location=(x, y, 0))
+
+
+class CreateCustomGridOperator(bpy.types.Operator):
+    bl_idname = "object.create_custom_grid"
+    bl_label = "Create Custom Grid"
+
+    def execute(self, context):
+        width = context.scene.grid_width
+        height = context.scene.grid_height
+        spacing = context.scene.grid_spacing
+
+        create_grid(width, height, spacing)
+        return {'FINISHED'}
 
 
 class CustomGridPanel(bpy.types.Panel):
@@ -22,14 +45,6 @@ class CustomGridPanel(bpy.types.Panel):
         col.prop(context.scene, "grid_height")
         col.prop(context.scene, "grid_spacing")
         col.operator("object.create_custom_grid")
-
-
-def create_grid_operator(self, context):
-    width = context.scene.grid_width
-    height = context.scene.grid_height
-    spacing = context.scene.grid_spacing
-
-    create_grid(width, height, spacing)
 
 
 def register():
