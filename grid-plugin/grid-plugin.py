@@ -3,18 +3,22 @@ import bpy
 bl_info = {
     "name": "Custom Grid Creator",
     "author": "Your Name",
-    "version": (1, 0),
+    "version": (1, 1),  # Incremented version
     "blender": (2, 80, 0),
     "location": "View3D > Tool Shelf > Custom Grid",
-    "description": "Create a custom grid of empty objects",
+    "description": "Create a custom grid of empty objects with center at (0, 0, 0)",
     "category": "Add Mesh",
 }
 
 
 def create_grid(width, height, spacing):
-    for x in range(0, width, spacing):
-        for y in range(0, height, spacing):
-            bpy.ops.object.empty_add(location=(x, y, 0))
+    offset_x = -width * spacing / 2
+    offset_y = -height * spacing / 2
+
+    for x in range(0, width):
+        for y in range(0, height):
+            bpy.ops.object.empty_add(
+                location=(offset_x + x * spacing, offset_y + y * spacing, 0))
 
 
 class CreateCustomGridOperator(bpy.types.Operator):
