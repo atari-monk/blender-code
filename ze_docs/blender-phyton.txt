@@ -1,0 +1,2 @@
+to install custom phyton lib:
+use install_library.py in character_lib

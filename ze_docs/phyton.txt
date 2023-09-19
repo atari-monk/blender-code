@@ -1,0 +1,21 @@
+In Python, there are several naming conventions that are commonly followed to make code more readable and maintainable. Here are some of the most widely accepted conventions:
+
+Variable Names: Variable names are typically written in lowercase with words separated by underscores. For example: my_variable, count, user_name.
+
+Function Names: Function names are also written in lowercase with words separated by underscores. For example: calculate_total(), print_message(), get_user_input().
+
+Constant Names: Constants, which are variables whose values should not be changed, are usually written in uppercase with words separated by underscores. For example: MAX_VALUE, PI, DATABASE_URL.
+
+Module Names: Module names are usually short and all lowercase. If the module name consists of multiple words, they are separated by underscores. For example: math_utils.py, file_operations.py.
+
+Class Names: Class names are typically written in CamelCase, also known as CapWords, where each word within the name starts with an uppercase letter and there are no underscores. For example: MyClass, UserAccount, HttpRequest.
+
+Method Names: Method names within a class are written in lowercase with words separated by underscores. For example: calculate_total(), get_user_name(), print_summary().
+
+Package Names: Package names (used to organize modules) are usually short, all lowercase, and do not contain underscores. For example: utilities, web, data_processing.
+
+Private Variables and Methods: Variables and methods that are intended to be private (not part of the public API) are often prefixed with a single underscore. For example: _private_variable, _private_method().
+
+Special Methods: Special methods (also known as "magic" or "dunder" methods) that have specific meanings in Python, such as __init__, __str__, and __getitem__, follow a specific naming convention and are enclosed in double underscores.
+
+Adhering to these naming conventions can improve the readability and consistency of your Python code and make it easier for other developers to understand and collaborate on your projects. It's important to note that these conventions are not strict rules, but rather widely adopted practices in the Python community.

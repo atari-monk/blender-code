@@ -14,8 +14,3 @@ class Character:
         cube.scale.x = width
         cube.scale.y = depth
         cube.scale.z = height
-
-
-# Example usage:
-character = Character()
-character.add_body_cube(width=35, depth=20, height=60, location=(0, 0, 0))

@@ -14,8 +14,3 @@ class SceneUnitsManager:
         unit_settings.scale_length = 0.01  # 1 Blender unit will be equivalent to 1 cm
         unit_settings.length_unit = 'CENTIMETERS'
         print('Scene Units set to CENTIMETERS')
-
-
-# Example usage:
-scene_units_manager = SceneUnitsManager()
-scene_units_manager.setSceneUnitsToCentimeters()
