@@ -1,5 +1,5 @@
 import bpy
-from character_lib.character import Character
+from character_lib.api.character import Character
 
 api = Character()
 
