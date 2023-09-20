@@ -35,3 +35,6 @@ api.extrude_selected_face(model, extrude_distance=46)
 api.extrude_selected_face(model, extrude_distance=46)
 api.extrude_selected_face(model, extrude_distance=40)
 api.extrude_selected_face(model, extrude_distance=8)
+
+# after that i remove left side of model
+# and run add_mirror_mod script

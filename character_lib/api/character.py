@@ -108,3 +108,34 @@ class Character:
         else:
             print(f"Object '{object_name}' not found.")
             return None
+
+    def add_or_set_mirror_modifier(self, target_object, use_axis=(True, True, True)):
+        """
+        Add a Mirror Modifier to the given object or set its properties if it exists.
+
+        Args:
+        target_object (bpy.types.Object): The object to which the Mirror Modifier should be added or modified.
+        use_axis (tuple): A tuple of three boolean values indicating axis mirror settings (X, Y, Z).
+
+        Returns:
+        bpy.types.Modifier: The created or modified Mirror Modifier.
+        """
+        mirror_modifier = None
+
+        # Find the Mirror Modifier in the object's modifiers list
+        for modifier in target_object.modifiers:
+            if modifier.type == 'MIRROR':
+                mirror_modifier = modifier
+                break
+
+        # If the Mirror Modifier does not exist, add it
+        if mirror_modifier is None:
+            bpy.context.view_layer.objects.active = target_object
+            bpy.ops.object.modifier_add(type='MIRROR')
+            # Get the last added modifier
+            mirror_modifier = target_object.modifiers[-1]
+
+        # Set the 'use_axis' property
+        mirror_modifier.use_axis = use_axis
+
+        return mirror_modifier
