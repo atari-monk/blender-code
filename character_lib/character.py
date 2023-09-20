@@ -43,7 +43,6 @@ class Character:
         bpy.ops.mesh.select_all(action='DESELECT')
 
     def select_bottom_face_by_normal(self):
-        # ob = bpy.data.objects['head']
         bpy.ops.object.mode_set(mode='EDIT')
         mesh = bmesh.from_edit_mesh(bpy.context.object.data)
         for f in mesh.faces:
@@ -62,4 +61,50 @@ class Character:
             return
         bpy.ops.mesh.extrude_region_move(
             TRANSFORM_OT_translate={"value": (0, 0, -extrude_distance)})
-        #bpy.ops.object.mode_set(mode='OBJECT')
+        bpy.ops.object.mode_set(mode='OBJECT')
+
+    def switch_to_vertex_mode(self, cube_object):
+        if cube_object.type != 'MESH':
+            print("Error: Provided object is not a mesh.")
+            return
+
+        bpy.context.view_layer.objects.active = cube_object
+        bpy.ops.object.mode_set(mode='EDIT')
+
+        bpy.context.tool_settings.mesh_select_mode[1] = False
+        bpy.context.tool_settings.mesh_select_mode[2] = False
+        bpy.context.tool_settings.mesh_select_mode[0] = True
+
+    def switch_to_face_mode(self, cube_object):
+        if cube_object.type != 'MESH':
+            print("Error: Provided object is not a mesh.")
+            return
+
+        bpy.context.view_layer.objects.active = cube_object
+        bpy.ops.object.mode_set(mode='EDIT')
+
+        bpy.context.tool_settings.mesh_select_mode[0] = False
+        bpy.context.tool_settings.mesh_select_mode[1] = False
+        bpy.context.tool_settings.mesh_select_mode[2] = True
+
+    def switch_to_edge_mode(self, cube_object):
+        if cube_object.type != 'MESH':
+            print("Error: Provided object is not a mesh.")
+            return
+
+        bpy.context.view_layer.objects.active = cube_object
+        bpy.ops.object.mode_set(mode='EDIT')
+
+        bpy.context.tool_settings.mesh_select_mode[0] = False
+        bpy.context.tool_settings.mesh_select_mode[2] = False
+        bpy.context.tool_settings.mesh_select_mode[1] = True
+
+    def select_object_by_name(self, object_name):
+        obj = bpy.data.objects.get(object_name)
+        if obj:
+            obj.select_set(True)
+            bpy.context.view_layer.objects.active = obj
+            return obj
+        else:
+            print(f"Object '{object_name}' not found.")
+            return None

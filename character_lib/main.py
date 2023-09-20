@@ -3,27 +3,31 @@ from character_lib.character import Character
 
 api = Character()
 
-character = api.add_empty({
-    'name': 'character',
+empty = api.add_empty({
+    'name': 'character_empty',
     'location': (0, 0, 172)
 })
 
-head = api.add_cube({
-    'name': 'head',
+model = api.add_cube({
+    'name': 'character_mesh',
     'width': 30,
     'depth': 30,
     'height': 30,
     'location': (0, 0, 142)
 })
 
-api.set_parent(character, head)
+api.switch_to_vertex_mode(model)
 
-api.set_object_active(head)
-    
-api.set_edit_mode(head)
+api.set_parent(empty, model)
+
+api.set_object_active(model)
+
+api.set_edit_mode(model)
 
 api.deselect()
 
 api.select_bottom_face_by_normal()
 
-api.extrude_selected_face(head, extrude_distance= 10)
+api.switch_to_face_mode(model)
+
+api.extrude_selected_face(model, extrude_distance=10)
