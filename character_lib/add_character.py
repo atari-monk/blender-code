@@ -38,3 +38,5 @@ api.extrude_selected_face(model, extrude_distance=8)
 
 # after that i remove left side of model
 # and run add_mirror_mod script
+# next i added reference images
+# next i add loop cuts to fit cubes as body parts
