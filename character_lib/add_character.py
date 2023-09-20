@@ -10,10 +10,10 @@ empty = api.add_empty({
 
 model = api.add_cube({
     'name': 'character_mesh',
-    'width': 30,
-    'depth': 30,
-    'height': 30,
-    'location': (0, 0, 142)
+    'width': 14,
+    'depth': 19,
+    'height': 22,
+    'location': (0, 0, 160)
 })
 
 api.switch_to_vertex_mode(model)
@@ -30,4 +30,8 @@ api.select_bottom_face_by_normal()
 
 api.switch_to_face_mode(model)
 
-api.extrude_selected_face(model, extrude_distance=10)
+api.extrude_selected_face(model, extrude_distance=9)
+api.extrude_selected_face(model, extrude_distance=46)
+api.extrude_selected_face(model, extrude_distance=46)
+api.extrude_selected_face(model, extrude_distance=40)
+api.extrude_selected_face(model, extrude_distance=8)
